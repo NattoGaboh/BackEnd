@@ -1,4 +1,8 @@
+using BackEnd.Domain.IRepositories;
+using BackEnd.Domain.IServices;
 using BackEnd.Persistence.Context;
+using BackEnd.Persistence.Repositories;
+using BackEnd.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +32,8 @@ namespace BackEnd
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("Conexion")));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserServices, UserServices>();
             services.AddControllers();
         }
 
