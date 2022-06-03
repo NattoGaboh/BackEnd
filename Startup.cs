@@ -32,8 +32,13 @@ namespace BackEnd
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("Conexion")));
-            services.AddScoped<IUserRepository, UserRepository>();
+            //Services
             services.AddScoped<IUserServices, UserServices>();
+            services.AddScoped<ILoginServices, LoginServices>();
+            //Repository
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
+
             services.AddControllers();
         }
 
