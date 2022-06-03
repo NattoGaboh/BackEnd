@@ -8,6 +8,7 @@ namespace BackEnd.Domain.IServices
 {
     public interface IUserServices
     {
-            Task SaveUser(User user);
+        Task SaveUser(User user);
+        Task<bool> ValidateExistence(User user);
     }
 }

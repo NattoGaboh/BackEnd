@@ -9,5 +9,6 @@ namespace BackEnd.Domain.IRepositories
     public interface IUserRepository
     {
         Task SaveUser(User user);
+        Task<bool> ValidateExistence(User user);
     }
 }
