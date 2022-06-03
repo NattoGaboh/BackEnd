@@ -10,5 +10,8 @@ namespace BackEnd.Domain.IServices
     {
         Task SaveUser(User user);
         Task<bool> ValidateExistence(User user);
+        Task<User> ValidatePassword(int idUser, string pwdBefore);
+        Task UpdatePassword(User user);
+
     }
 }

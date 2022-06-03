@@ -26,5 +26,15 @@ namespace BackEnd.Persistence.Repositories
             var validateExistence = await _context.User.AnyAsync(x => x.NameUser == user.NameUser);
             return validateExistence;
         }
+        public async Task<User> ValidatePassword(int idUser,string pwdBefore)
+        {
+            var user = await _context.User.Where(x => x.Id == idUser && x.Password == pwdBefore).FirstOrDefaultAsync();
+            return user;
+        }
+        public async Task UpdatePassword(User user)
+        {
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+        }
     }
 }
